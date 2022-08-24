@@ -88,7 +88,7 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
     
       - uses: actions/checkout@v3
-      
+
       - name: Build an image from Dockerfile
         run: |
               docker build . --file Dockerfile --tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/demo:${{ github.sha }}
@@ -103,6 +103,11 @@ jobs:
           vuln-type: 'os,library'
           security-checks: 'vuln'
   #        severity: 'CRITICAL,HIGH'
+          output: 'trivy-results.sarif'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: code-scan-result
+          path: trivy-results.sarif
       
       - name: Push an image to ACR
         run: |
