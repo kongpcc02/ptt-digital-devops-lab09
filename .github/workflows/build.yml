@@ -88,7 +88,8 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
     
       - uses: actions/checkout@v3
-        name: Build an image from Dockerfile
+      
+      - name: Build an image from Dockerfile
         run: |
               docker build . --file Dockerfile --tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/demo:${{ github.sha }}
 
