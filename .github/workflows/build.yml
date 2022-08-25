@@ -71,7 +71,7 @@ jobs:
   
   docker-build:
     name: Login
-    needs: ["quality-gate", "code-scan"]
+    needs: [quality-gate]
     runs-on: ubuntu-latest
     steps:
 
