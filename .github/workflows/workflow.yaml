@@ -1,5 +1,6 @@
 name: ptt-digital-devops-lab09
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
